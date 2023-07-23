@@ -7,7 +7,7 @@ model = load_model('modelo_001')
 
 def predict(model, input_df):
     predictions_df = predict_model(estimator=model, data=input_df)
-    predictions = predictions_df['Label'][0]
+    predictions = predictions_df
     return predictions
 
 def run():
@@ -40,12 +40,12 @@ def run():
         distri = st.text_input('Distrito', 'Pisco')
         potencia = st.number_input('Potencia(KW)')
         consumo = st.number_input('Consumo')
-      
+        localidad = st.text_input('Localidad', '...')
 
         output=""
 
         #LA APP LE PASA LOS DATOS DEL FROND MEDIANTE UN DICCIONARIO
-        input_dict = {'depar' : depar, 'prov' : prov, 'distri' : distri, 'potencia' : potencia, 'consumo' : consumo }
+        input_dict = {'DEPARTAMENTO' : depar, 'PROVINCIA' : prov, 'DISTRITO' : distri, 'LOCALIDAD':localidad ,'POTENCIA_CONTRATADA' : potencia, 'CONSUMO_KW' : consumo }
         input_df = pd.DataFrame([input_dict])
         
         #BOTON
